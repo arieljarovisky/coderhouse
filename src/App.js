@@ -1,17 +1,17 @@
+import React from 'react'
+import './App.css';
 
-import "./App.css";
+import NavBar from './components/navbar/navbar';
+
 
 function App() {
-	return (
-		<div className="App">
-			<nav>
-			<button>Inicio</button>
-			<button>Categorias</button>
-			<button>Sobre Nosotros</button>
-			<button>Productos</button>
-			</nav>
-		</div>
-	);
+  return (
+    <div className="App">
+        <NavBar />
+      
+        
+    </div>
+  );
 }
 
 export default App;

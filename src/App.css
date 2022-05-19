@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+img{
+  width: 80px;
+}
+
+.carrito{
+  font-size: 40px;
+  background-color: aliceblue;
+  max-width: 600px;
+}
