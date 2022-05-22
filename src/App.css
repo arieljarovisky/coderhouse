@@ -46,3 +46,23 @@ img{
   background-color: aliceblue;
   max-width: 600px;
 }
+
+.itemlistcontainer{
+  font-size: 60px;
+}
+.cajacontenedora{
+  max-width: 500px;
+  margin: auto;
+  margin-top: 200px;
+  border: solid 1px black;
+}
+.caja{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.boton{
+  background-color: transparent;
+  margin-left: 5%;
+  margin-right: 5%;
+}
