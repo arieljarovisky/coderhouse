@@ -2,23 +2,31 @@
 
 import { useState, useEffect } from 'react'
 import { getProducts } from '../../asymock'
-import Itemlist from '../itemlist/itemlist'
+import ItemList from '../itemList/itemList'
+import { useParams } from 'react-router-dom'
+import { getProductsByCategory } from '../../asymock'
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = ({ greeting, handlePage }) => {
     const [products, setProducts] = useState([])
 
+    const { categoryId } = useParams()
+
     useEffect(() => {
-        getProducts().then(response => {
-            setProducts(response)
-        })
-    }, [])
-   
-    console.log('antes de montar')
+        if(!categoryId) {
+            getProducts().then(response => {
+                setProducts(response)
+            })
+        } else {
+            getProductsByCategory(categoryId).then(response => {
+                setProducts(response)
+            })
+        }
+    }, [categoryId])
 
     return(
         <div className='ItemListContainer'>
             <h1>{ greeting }</h1>
-            <Itemlist products={products}/>
+            <ItemList products={products} handlePage={handlePage}/>
         </div>
     )
 }
