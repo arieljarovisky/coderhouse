@@ -1,5 +1,5 @@
 
-import Item from '../item/item'
+import Item from '../Item/Item'
 
 const ItemList = ({products, handlePage}) => {
     return (

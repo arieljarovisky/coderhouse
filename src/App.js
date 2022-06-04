@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
-import ItemListContainer from "./components/ItemListContainer/itemlistcontainer";
-import NavBar from "./components/navbar/navbar";
-import ItemCount from "./components/countfunction/countfunction";
-import ItemDetailContainer from "./components/ItemDetailContainer/itemDetailContainer";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import NavBar from "./components/NavBar/NavBar";
+import ItemCount from "./components/CountFunction/CountFunction";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {

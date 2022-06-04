@@ -1,6 +1,6 @@
 
 import './navbar.css'
-import Carrito from '../carrito/Carrito';
+import Carrito from '../Carrito/Carrito';
 import { Link, NavLink } from 'react-router-dom'
 const navbar = () => {
 

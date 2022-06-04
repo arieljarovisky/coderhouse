@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { getProducts } from '../../asymock'
-import ItemList from '../itemList/itemList'
+import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 import { getProductsByCategory } from '../../asymock'
 
