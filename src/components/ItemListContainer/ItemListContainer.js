@@ -8,6 +8,7 @@ import { getProductsByCategory } from '../../asymock'
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
+    const [title, setTitle] = useState('')
 
     const { categoryId } = useParams()
 
@@ -33,18 +34,24 @@ const ItemListContainer = ({ greeting }) => {
         }
     }, [categoryId])
 
+    useEffect(() => {
+        setTimeout(() => {
+            setTitle('Cambie titulo')
+        }, 3000)
+    })
+
     if(loading) {
         return <h1>Loading...</h1>
     }
 
     return(
         <div className='ItemListContainer'>
-            <h1>{ greeting }</h1>
+            <h1>{ title }</h1>
             { 
                 products.length > 0 
                     ? <ItemList products={products} />
                     : <h2>No hay productos</h2>
-                }
+            }
         </div>
     )
 }
