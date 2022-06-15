@@ -4,9 +4,6 @@ import { useState } from 'react'
 const ItemCount = ({stock = 0, initial = 1, onAdd})=> {
    const [quantity, setQuantity] = useState(initial)
 
-   console.log(initial)
-   console.log(quantity)
-
    const increment = () => {
        if(quantity < stock) {
            setQuantity(quantity+1)
