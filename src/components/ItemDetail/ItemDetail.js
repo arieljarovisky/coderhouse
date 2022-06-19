@@ -16,7 +16,7 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
     const handleOnAdd = (quantity) => {
         setQuantity(quantity)
         setNotification('success', 'Se agrego correctamente al carrito')
-        addItem({ id, name, price, quantity: Number(quantity) })
+        addItem({ id, name, price, quantity })
     }
 
     return (

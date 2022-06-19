@@ -1,65 +1,27 @@
 
-import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-
-import { getDocs, collection, query, where} from 'firebase/firestore'
-import { db } from '../../services/firebase'
+import { getProducts } from '../../services/firebase/firestore'
+import { useFirestore } from '../../hooks/useFirestore'
 
 const ItemListContainer = ({ greeting }) => {
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
-
     const { categoryId } = useParams()
+    const { isLoading, data, error } = useFirestore(() => getProducts(categoryId), [categoryId])
 
-    useEffect(() => {
-        setLoading(true)
-
-        const collectionRef = categoryId 
-            ? query(collection(db, 'products'), where('category', '==', categoryId)) 
-            : collection(db, 'products')
-
-        getDocs(collectionRef).then(response => {
-            const products = response.docs.map(doc => {
-                return { id: doc.id, ...doc.data() }
-            })
-            setProducts(products)
-        }).catch(error => {
-            console.log(error)
-        }).finally(() => {
-            setLoading(false)
-        })
-
-        // if(!categoryId) {
-        //     getProducts().then(response => {
-        //         setProducts(response)
-        //     }).catch(error => {
-        //         console.log(error)
-        //     }).finally(() => {
-        //         setLoading(false)
-        //     })
-        // } else {
-        //     getProductsByCategory(categoryId).then(response => {
-        //         setProducts(response)
-        //     }).catch(error => {
-        //         console.log(error)
-        //     }).finally(() => {
-        //         setLoading(false)
-        //     })
-        // }
-    }, [categoryId])
-
-
-    if(loading) {
+    if(isLoading) {
         return <h1>Loading...</h1>
+    }
+
+    if(error) {
+        return <h1>Hubo un error</h1>
     }
 
     return(
         <div className='ItemListContainer'>
             <h1>{ greeting }</h1>
             { 
-                products.length > 0 
-                    ? <ItemList products={products} />
+                data.length > 0 
+                    ? <ItemList products={data} />
                     : <h2>No hay productos</h2>
             }
         </div>

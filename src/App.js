@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react'
+import React from 'react'
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
@@ -7,11 +7,9 @@ import Cart from './components/Cart/Cart';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartContextProvider } from './context/CartContext';
 import { NotificationProvider } from './notification/Notification';
+import { Navigate } from 'react-router-dom'
 
-
-
-
-const App = () => {
+const App = () => { 
   return (
     <div className="App">
         <CartContextProvider>
@@ -24,7 +22,7 @@ const App = () => {
                 <Route path='/detail/:productId' element={<ItemDetailContainer />}/>
                 <Route path='/about' element={<h1>About</h1>}/>
                 <Route path='/cart' element={<Cart />}/>
-                <Route path='*' element={<h1>PAGE NOT FOUND 404</h1>} />
+                <Route path='*' element={<Navigate to='/'/>} />
               </Routes>
             </BrowserRouter>
           </NotificationProvider>

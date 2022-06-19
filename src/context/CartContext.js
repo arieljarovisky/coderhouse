@@ -1,16 +1,31 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect, useRef } from "react";
 
 const CartContext = createContext()
 
 export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([])
+    console.log(cart)
+    const countRenderRef = useRef(0)
+
+    // useEffect(() => {
+    //     const cartSaved = localStorage.getItem('cart')
+    //     const cartSavedParsed = JSON.parse(cartSaved)
+    //     setCart(cartSavedParsed)
+    // }, [])
+
+    // useEffect(() => {
+    //     if(countRenderRef.current > 0) {
+    //         localStorage.setItem('cart', JSON.stringify(cart))
+    //     }
+    //     countRenderRef.current += 1
+    // }, [cart])
     
     const addItem = (productToAdd) => {
 
         if(!isInCart(productToAdd.id)) {
             setCart([...cart, productToAdd])
         } else {
-            const newCart = cart.map(prod => {
+            const cartUpdated = cart.map(prod => {
                 if(prod.id === productToAdd.id) {
                     const newProduct = {
                         ...prod,
@@ -21,7 +36,7 @@ export const CartContextProvider = ({ children }) => {
                    return prod 
                 }
             })
-            setCart(newCart)
+            setCart(cartUpdated)
         }
     }
     
