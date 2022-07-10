@@ -4,11 +4,6 @@ const CountFunction = () => {
     const [count, setCount] = useState(0)
 
     useEffect(() => {
-        console.log('Me ejecuto despues del montaje')
-
-        return () => {
-            console.log('Me ejecuto antes de desmontarme')
-        }
     }, [])
 
     const decrement = () => {
@@ -21,7 +16,6 @@ const CountFunction = () => {
         setCount(count + 1)
     }
 
-    console.log('ejecuto antes de montar')
 
     return(
         <div className='cajacontenedora'>

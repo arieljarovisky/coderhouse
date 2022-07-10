@@ -4,10 +4,12 @@ import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import Cart from './components/Cart/Cart';
+import Formulario from './components/Formulario/Formulario';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartContextProvider } from './context/CartContext';
 import { NotificationProvider } from './notification/Notification';
 import { Navigate } from 'react-router-dom'
+
 
 const App = () => { 
   return (
@@ -22,6 +24,7 @@ const App = () => {
                 <Route path='/detail/:productId' element={<ItemDetailContainer />}/>
                 <Route path='/about' element={<h1>About</h1>}/>
                 <Route path='/cart' element={<Cart />}/>
+                <Route path='/formulario' element={<Formulario />}></Route>
                 <Route path='*' element={<Navigate to='/'/>} />
               </Routes>
             </BrowserRouter>
